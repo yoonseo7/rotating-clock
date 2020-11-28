@@ -1,3 +1,5 @@
+
+
 int cx, cy;
 int radius;
 float secondsRadius;
@@ -29,7 +31,7 @@ void setup() {
 
   minAng = -90;
   hourAng = 0;
-  speed = 0.1;
+  speed = 0.08;
 }
 
 
@@ -64,7 +66,7 @@ void draw() {
   displayInside();
   displayOutside();
   
-  time += 0.1;
+  time += speed;
   
   textSize(50);
   text(int(time/60) + ":" + int(time%60), 10, 50);
@@ -93,12 +95,12 @@ void displayOutside()
   fill(0, 0, 255);
   textSize(10);
   int min = 60;
-  for (int a = 0; a < 360; a+=30) {
+  for (int a = 0; a < 360; a+=6) {
     float angle = radians(minAng+a);
     float x = cx + cos(angle) * minutesRadius;
     float y = cy + sin(angle) * minutesRadius;
     text(min, x, y);
     if (min == 60) min = 0;
-    min += 5;
+    min += 1;
   }
 }
